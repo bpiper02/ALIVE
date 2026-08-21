@@ -1,0 +1,16 @@
+{
+  "name": "alive-music-content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:exporter": "esbuild exporter.js --bundle --format=esm --target=es2022 --splitting --outdir=exporter-dist --entry-names=[name] --chunk-names=chunks/[name]-[hash]",
+    "build": "pnpm run build:exporter"
+  },
+  "dependencies": {
+    "@mediabunny/aac-encoder": "^1.52.2",
+    "mediabunny": "^1.52.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
+  }
+}

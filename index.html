@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f1ff4b" />
+  <title>b.com / ALIVE</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="launch.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#" aria-label="b.com home">b.com<span>/ALIVE</span></a>
+    <div class="status"><i></i> FILES STAY ON THIS MACHINE</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow">B.COM VISUAL UTILITY / BUILD 001</div>
+      <div class="hero-technical" aria-hidden="true">
+        <div class="hero-vinyl"><i></i></div>
+        <span class="tech-note tech-rpm">33⅓ RPM</span>
+        <span class="tech-note tech-local">LOCAL RENDER</span>
+        <span class="tech-note tech-motions">06 MOTIONS</span>
+      </div>
+      <div class="ambient-marks" aria-hidden="true"><span class="register-mark">＋</span><span class="output-mark">1080 × 1920</span><span class="local-mark">LOCAL / 001</span></div>
+      <h1>MAKE YOUR<br><em>COVER MOVE.</em></h1>
+      <p class="hero-copy">Drop your artwork and song. Export a post-ready music visual—right in your browser.</p>
+      <div class="proof-strip" aria-label="ALIVE product promises"><span>100% FREE</span><span>NO SIGN-UP</span><span>NO GENERATIVE AI</span><span>MEDIA STAYS ON-DEVICE</span></div>
+      <p class="process-note">Your artwork, animated—not regenerated. Built with procedural motion and on-device audio analysis.</p>
+    </section>
+
+    <section class="process-rail" aria-label="Four-step process">
+      <div><b>01 COVER</b><small>JPG PNG WEBP</small></div>
+      <div><b>02 SONG</b><small>MP3 WAV</small></div>
+      <div><b>03 MOVE</b><small>6 MODES</small></div>
+      <div><b>04 EXPORT</b><small>MP4</small></div>
+    </section>
+
+    <section class="studio" aria-label="Video maker">
+      <div class="controls">
+        <div class="step-label"><span>01</span> YOUR RELEASE</div>
+        <div class="drop-grid">
+          <label class="drop" id="coverDrop">
+            <input id="coverInput" type="file" accept="image/png,image/jpeg,image/webp" />
+            <span class="drop-icon">＋</span><strong>COVER ART</strong><small id="coverName">JPG, PNG OR WEBP</small>
+          </label>
+          <label class="drop" id="audioDrop">
+            <input id="audioInput" type="file" accept=".mp3,.wav,audio/mpeg,audio/wav,audio/x-wav" />
+            <span class="drop-icon">♪</span><strong>SONG</strong><small id="audioName">MP3 OR WAV</small>
+          </label>
+        </div>
+        <div class="quick-links"><button id="demoBtn" class="text-btn">NO FILES? LOAD THE DEMO →</button><button id="coverMakerBtn" class="text-btn">NO ARTWORK? MAKE A COVER →</button></div>
+        <div class="upload-error" id="uploadError" role="alert" hidden></div>
+        <div class="cover-maker" id="coverMaker" hidden>
+          <div class="editor-title"><span>COVER MAKER</span><span>1200 × 1200</span></div>
+          <div class="cover-styles" role="radiogroup" aria-label="Cover style">
+            <button class="cover-style active" data-cover-style="minimal" role="radio" aria-checked="true"><i></i><b>MINIMAL</b><small>QUIET / CLEAN</small></button>
+            <button class="cover-style" data-cover-style="acid" role="radio" aria-checked="false"><i></i><b>ANTI-DESIGN</b><small>RAW / DIGITAL</small></button>
+            <button class="cover-style" data-cover-style="chrome" role="radio" aria-checked="false"><i></i><b>Y2K CHROME</b><small>GLOSS / FLASH</small></button>
+            <button class="cover-style" data-cover-style="vintage" role="radio" aria-checked="false"><i></i><b>VINTAGE PRINT</b><small>WORN / ANALOG</small></button>
+            <button class="cover-style" data-cover-style="rave" role="radio" aria-checked="false"><i></i><b>RAVE FLYER</b><small>LOUD / CLUB</small></button>
+            <button class="cover-style" data-cover-style="editorial" role="radio" aria-checked="false"><i></i><b>EDITORIAL</b><small>FASHION / SERIF</small></button>
+          </div>
+          <div class="cover-fields">
+            <label>TITLE<input id="generatedTitle" maxlength="42" value="UNTITLED RELEASE"></label>
+            <label>ARTIST<input id="generatedArtist" maxlength="32" value="YOUR NAME"></label>
+            <label>BACKGROUND<input id="generatedBackground" type="color" value="#111111"></label>
+            <label>ACCENT<input id="generatedAccent" type="color" value="#ff3d21"></label>
+            <label>TEXT COLOR<input id="generatedTextColor" type="color" value="#ffffff"></label>
+            <label>FONT<select id="generatedFont"><option value="Alive Condensed">ARCHIVO NARROW / ANTI-DESIGN</option><option value="Inter">CLASSIC SANS</option><option value="DM Mono">TYPEWRITER</option><option value="Alive Serif">SERIF / LIBRE BASKERVILLE</option><option value="Alive Impact">IMPACT / ANTON</option><option value="Alive Script">HANDWRITTEN / PACIFICO</option><option value="Inter">INTER</option><option value="DM Mono">DM MONO</option></select></label>
+            <label class="cover-size">TITLE SIZE <output id="generatedSizeValue">110</output><input id="generatedSize" type="range" min="60" max="190" value="110"></label>
+          </div>
+          <button id="useGeneratedCover" class="make-cover">USE THIS COVER →</button>
+        </div>
+
+        <div class="step-label spaced"><span>02</span> WHERE IS IT GOING?</div>
+        <div class="destinations" role="radiogroup" aria-label="Destination preset">
+          <button class="destination active" data-preset="reel" role="radio" aria-checked="true"><b>REEL</b><small>9:16</small></button>
+          <button class="destination" data-preset="story" role="radio" aria-checked="false"><b>STORY</b><small>9:16</small></button>
+          <button class="destination" data-preset="feed" role="radio" aria-checked="false"><b>FEED</b><small>4:5</small></button>
+          <button class="destination" data-preset="square" role="radio" aria-checked="false"><b>POST</b><small>1:1</small></button>
+          <button class="destination spotify" data-preset="spotify" role="radio" aria-checked="false"><b>SPOTIFY</b><small>CANVAS</small></button>
+        </div>
+
+        <div class="step-label spaced"><span>03</span> PICK YOUR MOMENT</div>
+        <div class="duration-picker" role="radiogroup" aria-label="Video duration">
+          <button class="duration active" data-duration="15" role="radio" aria-checked="true">15 SEC</button>
+          <button class="duration" data-duration="30" role="radio" aria-checked="false">30 SEC</button>
+          <button class="duration" data-duration="60" role="radio" aria-checked="false">60 SEC</button>
+        </div>
+        <div class="timeline-wrap">
+          <canvas id="waveform" width="720" height="112" aria-label="Audio waveform"></canvas>
+          <input id="segment" type="range" min="0" max="0" value="0" step="0.1" disabled aria-label="Segment start time" />
+          <div class="times"><span id="startTime">0:00.0</span><span id="durationLabel">15 SEC</span><span id="endTime">0:15.0</span></div>
+        </div>
+
+        <div class="step-label spaced"><span>04</span> CHOOSE A MOTION</div>
+        <div class="templates" role="radiogroup" aria-label="Motion template">
+          <button class="template active" data-template="float" role="radio" aria-checked="true"><b>FLOAT</b><small>SLOW / CINEMATIC</small><span>01</span></button>
+          <button class="template" data-template="pulse" role="radio" aria-checked="false"><b>PULSE</b><small>BEAT / RESTRAINED</small><span>02</span></button>
+          <button class="template" data-template="internet" role="radio" aria-checked="false"><b>INTERNET</b><small>RETRO / ONLINE</small><span>03</span></button>
+          <button class="template" data-template="vinyl" role="radio" aria-checked="false"><b>VINYL</b><small>SPIN / PHYSICAL</small><span>04</span></button>
+          <button class="template" data-template="slides" role="radio" aria-checked="false"><b>SLIDES</b><small>ROLL / EDITORIAL</small><span>05</span></button>
+          <button class="template" data-template="tape" role="radio" aria-checked="false"><b>TAPE</b><small>CASSETTE / ANALOG</small><span>06</span></button>
+        </div>
+
+        <div class="speed-editor" id="speedEditor">
+          <div class="editor-title"><span>ANIMATION SPEED</span><span id="speedValue">1×</span></div>
+          <div class="speed-options" role="radiogroup" aria-label="Animation speed">
+            <button class="mini" data-motion-speed="0.35" role="radio" aria-checked="false">SLOW · 0.35×</button>
+            <button class="mini active" data-motion-speed="1" role="radio" aria-checked="true">NORMAL · 1×</button>
+            <button class="mini" data-motion-speed="2.5" role="radio" aria-checked="false">FAST · 2.5×</button>
+            <button class="mini" data-motion-speed="5" role="radio" aria-checked="false">TURBO · 5×</button>
+          </div>
+        </div>
+
+        <div class="internet-editor" id="internetEditor" hidden>
+          <div class="editor-title"><span>INTERNET COPY</span><span>LIVE</span></div>
+          <div class="editor-grid">
+            <label>TRACK TITLE<input id="trackTitle" maxlength="42" value="UNTITLED RELEASE" /></label>
+            <label>ARTIST<input id="artistName" maxlength="32" value="YOUR NAME" /></label>
+            <label>DETAIL LINE<input id="detailLine" maxlength="32" value="OUT NOW / 2026" /></label>
+            <label>STATUS<input id="statusText" maxlength="22" value="NOW PLAYING" /></label>
+            <label class="color-field">ACCENT<input id="accentColor" type="color" value="#f4e84a" /></label>
+          </div>
+        </div>
+
+        <div class="pulse-editor" id="pulseEditor" hidden>
+          <div class="editor-title"><span>PULSE ENGINE</span><span>AUDIO REACTIVE</span></div>
+          <div class="pulse-options">
+            <div class="option-group"><span>STYLE</span><div class="mini-buttons" role="radiogroup" aria-label="Pulse style">
+              <button class="mini active" data-pulse-mode="breathe" role="radio" aria-checked="true">BREATHE</button>
+              <button class="mini" data-pulse-mode="echo" role="radio" aria-checked="false">ECHO</button>
+              <button class="mini" data-pulse-mode="offset" role="radio" aria-checked="false">OFFSET</button>
+            </div></div>
+            <div class="option-group"><span>REACTION</span><div class="mini-buttons" role="radiogroup" aria-label="Pulse strength">
+              <button class="mini" data-pulse-strength="0.65" role="radio" aria-checked="false">SOFT</button>
+              <button class="mini active" data-pulse-strength="1" role="radio" aria-checked="true">MEDIUM</button>
+              <button class="mini" data-pulse-strength="1.5" role="radio" aria-checked="false">STRONG</button>
+            </div></div>
+            <div class="pulse-color-row"><label>COLOR<select id="pulseColorMode"><option value="art">FROM ARTWORK</option><option value="manual">MANUAL</option></select></label><input id="pulseManualColor" type="color" value="#ff3d21" disabled /></div>
+          </div>
+        </div>
+
+        <div class="vinyl-editor" id="vinylEditor" hidden>
+          <div class="editor-title"><span>VINYL CUT</span><span>LIVE</span></div>
+          <div class="vinyl-options">
+            <div class="vinyl-copy"><label>TRACK TITLE<input id="vinylTitle" maxlength="42" value="UNTITLED RELEASE" /></label><label>ARTIST<input id="vinylArtist" maxlength="32" value="YOUR NAME" /></label></div>
+            <label class="vinyl-select">ARTWORK MODE<select id="vinylFit"><option value="fill">FILL DISC</option><option value="fit">FIT / PAD</option></select></label>
+            <label>ZOOM <output id="vinylZoomValue">100%</output><input id="vinylZoom" type="range" min="100" max="180" value="100" /></label>
+            <label>LEFT / RIGHT<input id="vinylX" type="range" min="0" max="100" value="50" /></label>
+            <label>UP / DOWN<input id="vinylY" type="range" min="0" max="100" value="50" /></label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="playBtn" class="primary" disabled><span>▶</span> PREVIEW</button>
+          <button id="exportBtn" class="secondary" disabled>EXPORT VIDEO <span>↗</span></button>
+        </div>
+        <div class="preview-error" id="previewError" role="alert" hidden></div>
+        <p class="export-note" id="exportNote">1080 × 1920 · 15 SECONDS · AUDIO INCLUDED</p>
+        <div class="save-export" id="saveExportPanel" hidden>
+          <a id="saveExportLink" target="_blank" rel="noopener noreferrer">SAVE VIDEO</a>
+          <span>Open the video, then use Share → Save Video.</span>
+        </div>
+        <div class="attribution-control">
+          <button id="removeMarkToggle" class="remove-mark" type="button" aria-expanded="false" aria-controls="attributionPanel">Remove b.com mark</button>
+          <div id="attributionPanel" class="attribution-panel" hidden>
+            <p><strong>Help another artist find ALIVE.</strong><br>Share ALIVE, then unlock a clean export.</p>
+            <button id="shareAlive" class="share-primary" type="button">Share ALIVE</button>
+            <button id="copyAliveLink" class="share-fallback" type="button">Copy ALIVE link</button>
+            <p id="shareStatus" class="share-status" role="status" aria-live="polite"></p>
+            <button id="removeMarkConfirm" type="button" hidden>I shared — remove mark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-column">
+        <div class="preview-heading"><span>OUTPUT MONITOR</span><span id="templateName">REEL / FLOAT_01</span></div>
+        <div class="phone-shell"><canvas id="preview" width="1080" height="1920"></canvas><div class="canvas-empty" id="emptyState">DROP SOMETHING<br>WORTH MOVING.</div></div>
+        <div class="preview-meta"><span id="outputRatio">9:16</span><span id="previewStatus">READY WHEN YOU ARE</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>b.com © 2026</span><nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact / Copyright</a></nav><span>YOUR FILES NEVER LEAVE YOUR DEVICE.</span></footer>
+  <script src="site-config.js"></script>
+  <script src="analytics.js"></script>
+  <script src="app.js?v=preview-media-1"></script>
+</body>
+</html>
